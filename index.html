@@ -5,7 +5,10 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEMCLLYPB6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
         gtag('js', new Date());
 
         gtag('config', 'G-NEMCLLYPB6');
@@ -26,14 +29,14 @@
     <link rel="canonical" href="https://realmstoriches.github.io/">
     <style>
         #ai-website-generator-app {
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-          background-color: #f4f7f9;
-          color: #333;
-          line-height: 1.6;
-  /* Styles like margin, display:flex, min-height are removed as the host page controls the block */
-  /* You can add a border or default padding if desired for the embedded block */
-  /* border: 1px solid #ddd; */
-  /* padding: 10px; */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            line-height: 1.6;
+            /* Styles like margin, display:flex, min-height are removed as the host page controls the block */
+            /* You can add a border or default padding if desired for the embedded block */
+            /* border: 1px solid #ddd; */
+            /* padding: 10px; */
         }
 
         #ai-website-generator-app .container {
@@ -41,7 +44,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-  /* flex-grow: 1; Removed as it's part of full page layout */
+            /* flex-grow: 1; Removed as it's part of full page layout */
         }
 
         #ai-website-generator-app header {
@@ -50,7 +53,7 @@
             border-bottom: 1px solid #e0e0e0;
             padding-bottom: 20px;
         }
-        
+
         #ai-website-generator-app header h1 {
             color: #2c3e50;
             font-size: 2.5em;
@@ -78,7 +81,8 @@
         }
 
         #ai-website-generator-app textarea#prompt-input {
-            width: calc(100% - 22px); /* Account for padding and border */
+            width: calc(100% - 22px);
+            /* Account for padding and border */
             padding: 12px;
             border: 1px solid #ccc;
             border-radius: 6px;
@@ -135,12 +139,13 @@
         }
 
         @keyframes spin {
-             0% {
+            0% {
                 transform: rotate(0deg);
-                }
-           100% {
+            }
+
+            100% {
                 transform: rotate(360deg);
-                }
+            }
         }
 
         #ai-website-generator-app .output-section {
@@ -160,176 +165,194 @@
             margin-bottom: 20px;
         }
 
-#ai-website-generator-app .preview-area {
-  margin-bottom: 30px;
-}
+        #ai-website-generator-app .preview-area {
+            margin-bottom: 30px;
+        }
 
-#ai-website-generator-app .preview-area h3, 
-#ai-website-generator-app .code-area h4 {
-  color: #2c3e50;
-  font-size: 1.4em;
-  margin-bottom: 10px;
-}
+        #ai-website-generator-app .preview-area h3,
+        #ai-website-generator-app .code-area h4 {
+            color: #2c3e50;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
 
-#ai-website-generator-app iframe#preview-frame {
-  width: 100%;
-  height: 500px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: #fff; /* Ensure iframe background is white */
-}
+        #ai-website-generator-app iframe#preview-frame {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: #fff;
+            /* Ensure iframe background is white */
+        }
 
-#ai-website-generator-app .tabs {
-  display: flex;
-  margin-bottom: -1px; /* Overlap bottom border of tabs with panel's top border */
-}
+        #ai-website-generator-app .tabs {
+            display: flex;
+            margin-bottom: -1px;
+            /* Overlap bottom border of tabs with panel's top border */
+        }
 
-#ai-website-generator-app .tab-button {
-  padding: 10px 20px;
-  cursor: pointer;
-  border: 1px solid #ddd;
-  border-bottom: none;
-  background-color: #f9f9f9;
-  margin-right: 5px;
-  border-radius: 6px 6px 0 0;
-  font-size: 1em;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
+        #ai-website-generator-app .tab-button {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            background-color: #f9f9f9;
+            margin-right: 5px;
+            border-radius: 6px 6px 0 0;
+            font-size: 1em;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
 
-#ai-website-generator-app .tab-button.active {
-  background-color: #fff;
-  border-bottom: 1px solid #fff; /* Make it look like it merges with the panel */
-  color: #3498db;
-  font-weight: bold;
-  position: relative;
-  z-index: 1;
-}
+        #ai-website-generator-app .tab-button.active {
+            background-color: #fff;
+            border-bottom: 1px solid #fff;
+            /* Make it look like it merges with the panel */
+            color: #3498db;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
 
-#ai-website-generator-app .tab-button:hover:not(.active) {
-  background-color: #efefef;
-}
+        #ai-website-generator-app .tab-button:hover:not(.active) {
+            background-color: #efefef;
+        }
 
-#ai-website-generator-app .tab-panel {
-  border: 1px solid #ddd;
-  padding: 20px;
-  border-radius: 0 6px 6px 6px; /* Rounded corners for the panel itself */
-  background-color: #fff;
-}
+        #ai-website-generator-app .tab-panel {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 0 6px 6px 6px;
+            /* Rounded corners for the panel itself */
+            background-color: #fff;
+        }
 
-#ai-website-generator-app .tab-panel h4 {
-    margin-top: 0;
-}
+        #ai-website-generator-app .tab-panel h4 {
+            margin-top: 0;
+        }
 
-#ai-website-generator-app pre {
-  background-color: #2d2d2d; /* Dark background for code */
-  color: #f8f8f2; /* Light text for contrast */
-  padding: 15px;
-  border-radius: 6px;
-  overflow-x: auto;
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 0.9em;
-  line-height: 1.5;
-  max-height: 400px;
-}
+        #ai-website-generator-app pre {
+            background-color: #2d2d2d;
+            /* Dark background for code */
+            color: #f8f8f2;
+            /* Light text for contrast */
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+            max-height: 400px;
+        }
 
-#ai-website-generator-app code {
-  font-family: inherit;
-}
+        #ai-website-generator-app code {
+            font-family: inherit;
+        }
 
-#ai-website-generator-app .copy-button {
-  background-color: #7f8c8d;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  font-size: 0.9em;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  float: right;
-  margin-bottom: 10px;
-}
+        #ai-website-generator-app .copy-button {
+            background-color: #7f8c8d;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 0.9em;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            float: right;
+            margin-bottom: 10px;
+        }
 
-#ai-website-generator-app .copy-button:hover {
-  background-color: #6c7a7b;
-}
+        #ai-website-generator-app .copy-button:hover {
+            background-color: #6c7a7b;
+        }
 
-#ai-website-generator-app .error-message {
-  background-color: #e74c3c;
-  color: white;
-  padding: 15px;
-  border-radius: 6px;
-  margin-top: 20px;
-  text-align: center;
-  font-size: 1em;
-}
+        #ai-website-generator-app .error-message {
+            background-color: #e74c3c;
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1em;
+        }
 
-#ai-website-generator-app footer {
-  text-align: center;
-  padding: 20px;
-  margin-top: 30px;
-  color: #7f8c8d;
-  font-size: 0.9em;
-}
+        #ai-website-generator-app footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  #ai-website-generator-app header h1 {
-    font-size: 2em;
-  }
-  #ai-website-generator-app .input-section h2, 
-  #ai-website-generator-app .output-section h2 {
-    font-size: 1.5em;
-  }
-  #ai-website-generator-app .preview-area h3, 
-  #ai-website-generator-app .code-area h4 {
-    font-size: 1.2em;
-  }
-  #ai-website-generator-app button#generate-button {
-    font-size: 1em;
-    padding: 10px 20px;
-  }
-  #ai-website-generator-app iframe#preview-frame {
-    height: 400px;
-  }
-  #ai-website-generator-app .tabs {
-    flex-wrap: wrap; /* Allow tabs to wrap on small screens */
-  }
-  #ai-website-generator-app .tab-button {
-    margin-bottom: 5px; /* Add some space if tabs wrap */
-  }
-}
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            #ai-website-generator-app header h1 {
+                font-size: 2em;
+            }
 
-@media (max-width: 480px) {
-  #ai-website-generator-app .container {
-    width: 95%;
-    padding: 15px;
-  }
-  #ai-website-generator-app header h1 {
-    font-size: 1.8em;
-  }
-  #ai-website-generator-app textarea#prompt-input {
-    min-height: 80px;
-  }
-  #ai-website-generator-app iframe#preview-frame {
-    height: 300px;
-  }
-  #ai-website-generator-app pre {
-    font-size: 0.85em;
-  }
-}
-</style>
-  
+            #ai-website-generator-app .input-section h2,
+            #ai-website-generator-app .output-section h2 {
+                font-size: 1.5em;
+            }
+
+            #ai-website-generator-app .preview-area h3,
+            #ai-website-generator-app .code-area h4 {
+                font-size: 1.2em;
+            }
+
+            #ai-website-generator-app button#generate-button {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+
+            #ai-website-generator-app iframe#preview-frame {
+                height: 400px;
+            }
+
+            #ai-website-generator-app .tabs {
+                flex-wrap: wrap;
+                /* Allow tabs to wrap on small screens */
+            }
+
+            #ai-website-generator-app .tab-button {
+                margin-bottom: 5px;
+                /* Add some space if tabs wrap */
+            }
+        }
+
+        @media (max-width: 480px) {
+            #ai-website-generator-app .container {
+                width: 95%;
+                padding: 15px;
+            }
+
+            #ai-website-generator-app header h1 {
+                font-size: 1.8em;
+            }
+
+            #ai-website-generator-app textarea#prompt-input {
+                min-height: 80px;
+            }
+
+            #ai-website-generator-app iframe#preview-frame {
+                height: 300px;
+            }
+
+            #ai-website-generator-app pre {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+
 
     <!-- Import Map (from the app's original index.html, paths might need adjustment) -->
     <script type="importmap">
-    {
-      "imports": {
-        "react": "https://esm.sh/react@^19.1.0",
-        "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
-        "react/": "https://esm.sh/react@^19.1.0/",
-        "@google/genai": "https://esm.sh/@google/genai@^1.4.0"
-      }
-    }
+        {
+            "imports": {
+                "react": "https://esm.sh/react@^19.1.0",
+                "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+                "react/": "https://esm.sh/react@^19.1.0/",
+                "@google/genai": "https://esm.sh/@google/genai@^1.4.0"
+            }
+        }
     </script>
 
     <meta property="og:title" content="Realms to Riches: Build & Scale Your Profitable Online Business Today">
@@ -344,29 +367,30 @@
     <meta name="twitter:description" content="Realms to Riches empowers entrepreneurs to build and scale thriving online businesses. Discover proven digital marketing strategies, free courses on faceless brands, paid traffic, social media marketing, and recommended tools to achieve online success.">
     <meta name="twitter:image" content="https://realmstoriches.github.io/img/image1.png">
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Realms to Riches",
-        "url": "https://realmstoriches.github.io/",
-        "logo": "https://realmstoriches.github.io/img/logo.png",
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "304-266-4833",
-            "email": "realmstoriches@gmail.com",
-            "contactType": "Customer Service"
-        },
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Mill Creek, WV",
-            "addressLocality": "Mill Creek",
-            "addressRegion": "WV",
-            "postalCode": "26280",
-            "addressCountry": "US"
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Realms to Riches",
+            "url": "https://realmstoriches.github.io/",
+            "logo": "https://realmstoriches.github.io/img/logo.png",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "304-266-4833",
+                "email": "realmstoriches@gmail.com",
+                "contactType": "Customer Service"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Mill Creek, WV",
+                "addressLocality": "Mill Creek",
+                "addressRegion": "WV",
+                "postalCode": "26280",
+                "addressCountry": "US"
+            }
         }
-    }
     </script>
 </head>
+
 <body>
 
     <div id="main-popup-container" class="popup-overlay">
@@ -395,7 +419,7 @@
                 <button type="submit">Get Exclusive Insights</button>
             </form>
             <div id="form-message"></div>
-            <p class="mt-3"><a href="/ampcast.html" class="btn btn-secondary-outline">Learn More About AmpCast Benefits Here &raquo;</a></p>
+            <p class="mt-3"><a href="/ampcast.html" class="btn btn-secondary-outline">Learn More About AmpCast Benefits Here »</a></p>
         </div>
     </div>
 
@@ -415,7 +439,8 @@
                     <li><a href="/shopify-offer.html">Shopify Offer</a></li>
                     <li><a href="/ampcast.html">Ampcast Launch</a></li>
                     <li><a href="/services.html">Our Services</a></li>
-                    <li><a href="/view-cart.html" id="cart-link" aria-label="View Shopping Cart">
+                    <li>
+                        <a href="/view-cart.html" id="cart-link" aria-label="View Shopping Cart">
                             <i class="fas fa-shopping-cart cart-icon"></i>
                             <span id="cart-count" class="cart-count-badge">0</span>
                         </a>
@@ -426,86 +451,70 @@
     </header>
 
     <div class="full-width-banner">
-        <img src="img/bannerimage(2)-800w.webp"
-             srcset="img/bannerimage(2)-400w.webp, img/bannerimage(2)-800w.webp, img/bannerimage(2)-1200w.webp"
-             sizes="(max-width: 767px) 100vw, (max-width: 991px) 90vw, (max-width: 1199px) 80vw, 1200px"
-             alt="Two entrepreneurs discussing online business strategies in a modern office">
+        <img src="img/bannerimage(2)-800w.webp" srcset="img/bannerimage(2)-400w.webp, img/bannerimage(2)-800w.webp, img/bannerimage(2)-1200w.webp" sizes="(max-width: 767px) 100vw, (max-width: 991px) 90vw, (max-width: 1199px) 80vw, 1200px" alt="Two entrepreneurs discussing online business strategies in a modern office">
     </div>
 
     <main>
         <div id="ai-website-generator-app">
-    <!-- Paste the content from the new index.html here -->
+            <!-- AI App Content -->
             <script type="importmap">
-{
-  "imports": {
-    "@google/genai": "https://esm.sh/@google/genai@^1.4.0"
-  }
-}
-</script>
-
-  <div class="container">
-    <header>
-      <h1>AI Website Template Generator</h1>
-    </header>
-    <main>
-      <section class="input-section" aria-labelledby="input-heading">
-        <h2 id="input-heading">Describe Your Desired Website</h2>
-        <p>Enter a detailed description of the website you want to create. For example: "A modern landing page for a SaaS product with a hero section, features list, pricing table, and a contact form."</p>
-        <textarea id="prompt-input" rows="6" placeholder="e.g., A personal blog theme, clean and minimalist, with a sidebar for recent posts..." aria-label="Website description prompt"></textarea>
-        <button id="generate-button" type="button">Generate Website</button>
-        <div id="loading-indicator" class="loading-indicator" style="display: none;" role="status" aria-live="polite">
-          <div class="spinner"></div>
-          <p>Generating your website, please wait...</p>
+                {
+                    "imports": {
+                        "@google/genai": "https://esm.sh/@google/genai@^1.4.0"
+                    }
+                }
+            </script>
+            <div class="container">
+                <header>
+                    <h1>AI Website Template Generator</h1>
+                </header>
+                <main>
+                    <section class="input-section" aria-labelledby="input-heading">
+                        <h2 id="input-heading">Describe Your Desired Website</h2>
+                        <p>Enter a detailed description of the website you want to create. For example: "A modern landing page for a SaaS product with a hero section, features list, pricing table, and a contact form."</p>
+                        <textarea id="prompt-input" rows="6" placeholder="e.g., A personal blog theme, clean and minimalist, with a sidebar for recent posts..." aria-label="Website description prompt"></textarea>
+                        <button id="generate-button" type="button">Generate Website</button>
+                        <div id="loading-indicator" class="loading-indicator" style="display: none;" role="status" aria-live="polite">
+                            <div class="spinner"></div>
+                            <p>Generating your website, please wait...</p>
+                        </div>
+                    </section>
+                    <section id="output-section" class="output-section" style="display: none;" aria-labelledby="output-heading">
+                        <h2 id="output-heading">Generated Website</h2>
+                        <div class="preview-area">
+                            <h3>Preview</h3>
+                            <iframe id="preview-frame" title="Generated Website Preview" sandbox="allow-scripts allow-same-origin"></iframe>
+                        </div>
+                        <div class="code-area">
+                            <div class="tabs">
+                                <button class="tab-button active" data-tab="html" aria-controls="html-code-panel" role="tab" aria-selected="true">HTML</button>
+                                <button class="tab-button" data-tab="css" aria-controls="css-code-panel" role="tab" aria-selected="false">CSS</button>
+                                <button class="tab-button" data-tab="js" aria-controls="js-code-panel" role="tab" aria-selected="false">JavaScript</button>
+                            </div>
+                            <div id="html-code-panel" class="tab-panel active" role="tabpanel" aria-labelledby="html-tab">
+                                <h4>HTML Code</h4>
+                                <button class="copy-button" data-target="html-code">Copy HTML</button>
+                                <pre><code id="html-code" aria-live="polite"></code></pre>
+                            </div>
+                            <div id="css-code-panel" class="tab-panel" role="tabpanel" aria-labelledby="css-tab" style="display: none;">
+                                <h4>CSS Code</h4>
+                                <button class="copy-button" data-target="css-code">Copy CSS</button>
+                                <pre><code id="css-code" aria-live="polite"></code></pre>
+                            </div>
+                            <div id="js-code-panel" class="tab-panel" role="tabpanel" aria-labelledby="js-tab" style="display: none;">
+                                <h4>JavaScript Code</h4>
+                                <button class="copy-button" data-target="js-code">Copy JavaScript</button>
+                                <pre><code id="js-code" aria-live="polite"></code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    <div id="error-message" class="error-message" style="display: none;" role="alert"></div>
+                </main>
+                <footer>
+                    <p>Powered by Gemini API</p>
+                </footer>
+            </div>
         </div>
-      </section>
-
-      <section id="output-section" class="output-section" style="display: none;" aria-labelledby="output-heading">
-        <h2 id="output-heading">Generated Website</h2>
-        
-        <div class="preview-area">
-          <h3>Preview</h3>
-          <iframe id="preview-frame" title="Generated Website Preview" sandbox="allow-scripts allow-same-origin"></iframe>
-        </div>
-
-        <div class="code-area">
-          <div class="tabs">
-            <button class="tab-button active" data-tab="html"  aria-controls="html-code-panel" role="tab" aria-selected="true">HTML</button>
-            <button class="tab-button" data-tab="css" aria-controls="css-code-panel" role="tab" aria-selected="false">CSS</button>
-            <button class="tab-button" data-tab="js" aria-controls="js-code-panel" role="tab" aria-selected="false">JavaScript</button>
-          </div>
-          <div id="html-code-panel" class="tab-panel active" role="tabpanel" aria-labelledby="html-tab">
-            <h4>HTML Code</h4>
-            <button class="copy-button" data-target="html-code">Copy HTML</button>
-            <pre><code id="html-code" aria-live="polite"></code></pre>
-          </div>
-          <div id="css-code-panel" class="tab-panel" role="tabpanel" aria-labelledby="css-tab" style="display: none;">
-            <h4>CSS Code</h4>
-            <button class="copy-button" data-target="css-code">Copy CSS</button>
-            <pre><code id="css-code" aria-live="polite"></code></pre>
-          </div>
-          <div id="js-code-panel" class="tab-panel" role="tabpanel" aria-labelledby="js-tab" style="display: none;">
-            <h4>JavaScript Code</h4>
-            <button class="copy-button" data-target="js-code">Copy JavaScript</button>
-            <pre><code id="js-code" aria-live="polite"></code></pre>
-          </div>
-        </div>
-      </section>
-      <div id="error-message" class="error-message" style="display: none;" role="alert"></div>
-    </main>
-    <footer>
-      <p>Powered by Gemini API</p>
-    </footer>
-  </div>
-    <div class="container">
-      <header>
-        <h1>AI Website Template Generator</h1>
-      </header>
-      <main>
-        <!-- ... rest of the app's HTML structure ... -->
-      </main>
-      <footer>
-        <p>Powered by Gemini API</p>
-
 
         <div id="our-services" class="container">
             <h2>Our Services & Pricing</h2>
@@ -520,10 +529,7 @@
                         <h3>Business Management Consultation</h3>
                         <p>Strategic guidance to streamline your business operations and growth.</p>
                         <p><strong>Price: $300</strong></p>
-                        <button class="btn btn-primary buy-now-btn"
-                                data-service-id="consultation"
-                                data-service-name="Business Management Consultation"
-                                data-service-price="300">
+                        <button class="btn btn-primary buy-now-btn" data-service-id="consultation" data-service-name="Business Management Consultation" data-service-price="300">
                             Buy Now
                         </button>
                     </div>
@@ -537,10 +543,7 @@
                         <h3>Basic Brand Kit</h3>
                         <p>Essential branding elements including logo design, color palette, and typography.</p>
                         <p><strong>Price: $450</strong></p>
-                        <button class="btn btn-primary buy-now-btn"
-                                data-service-id="brandkit"
-                                data-service-name="Basic Brand Kit"
-                                data-service-price="450">
+                        <button class="btn btn-primary buy-now-btn" data-service-id="brandkit" data-service-name="Basic Brand Kit" data-service-price="450">
                             Buy Now
                         </button>
                     </div>
@@ -554,10 +557,7 @@
                         <h3>Marketing Campaign Management</h3>
                         <p>Expert setup and initial management of your marketing campaign (ad spend not included).</p>
                         <p><strong>Price: $700</strong></p>
-                        <button class="btn btn-primary buy-now-btn"
-                                data-service-id="campaign"
-                                data-service-name="Marketing Campaign Management"
-                                data-service-price="700">
+                        <button class="btn btn-primary buy-now-btn" data-service-id="campaign" data-service-name="Marketing Campaign Management" data-service-price="700">
                             Buy Now
                         </button>
                     </div>
@@ -571,10 +571,7 @@
                         <h3>Website Design (Basic)</h3>
                         <p>Professional, responsive website design for small businesses.</p>
                         <p><strong>Price: $1500</strong></p>
-                        <button class="btn btn-primary buy-now-btn"
-                                data-service-id="web-basic"
-                                data-service-name="Website Design (Basic)"
-                                data-service-price="1500">
+                        <button class="btn btn-primary buy-now-btn" data-service-id="web-basic" data-service-name="Website Design (Basic)" data-service-price="1500">
                             Buy Now
                         </button>
                     </div>
@@ -588,10 +585,7 @@
                         <h3>Website Design (Advanced)</h3>
                         <p>Advanced website design with custom features and integrations for growing businesses.</p>
                         <p><strong>Price: $3000</strong></p>
-                        <button class="btn btn-primary buy-now-btn"
-                                data-service-id="web-adv"
-                                data-service-name="Website Design (Advanced)"
-                                data-service-price="3000">
+                        <button class="btn btn-primary buy-now-btn" data-service-id="web-adv" data-service-name="Website Design (Advanced)" data-service-price="3000">
                             Buy Now
                         </button>
                     </div>
@@ -605,10 +599,7 @@
                         <h3>E-commerce Website Development</h3>
                         <p>Full-featured online store development with payment gateway integration.</p>
                         <p><strong>Price: $5000</strong></p>
-                        <button class="btn btn-primary buy-now-btn"
-                                data-service-id="ecommerce"
-                                data-service-name="E-commerce Website Development"
-                                data-service-price="5000">
+                        <button class="btn btn-primary buy-now-btn" data-service-id="ecommerce" data-service-name="E-commerce Website Development" data-service-price="5000">
                             Buy Now
                         </button>
                     </div>
@@ -622,10 +613,7 @@
                         <h3>SEO Optimization Package</h3>
                         <p>Comprehensive search engine optimization to improve your online visibility.</p>
                         <p><strong>Price: $800</strong></p>
-                        <button class="btn btn-primary buy-now-btn"
-                                data-service-id="seo-package"
-                                data-service-name="SEO Optimization Package"
-                                data-service-price="800">
+                        <button class="btn btn-primary buy-now-btn" data-service-id="seo-package" data-service-name="SEO Optimization Package" data-service-price="800">
                             Buy Now
                         </button>
                     </div>
@@ -639,10 +627,7 @@
                         <h3>Social Media Management</h3>
                         <p>Professional management of your social media presence to engage your audience.</p>
                         <p><strong>Price: $600</strong></p>
-                        <button class="btn btn-primary buy-now-btn"
-                                data-service-id="social-media"
-                                data-service-name="Social Media Management"
-                                data-service-price="600">
+                        <button class="btn btn-primary buy-now-btn" data-service-id="social-media" data-service-name="Social Media Management" data-service-price="600">
                             Buy Now
                         </button>
                     </div>
@@ -656,11 +641,7 @@
                         <h3>Realms to Riches Elite Support</h3>
                         <p>Gain exclusive access to priority support, monthly strategic coaching sessions, and a curated library of resources to ensure your business continuously thrives online.</p>
                         <p><strong>Price: $250/month</strong></p>
-                        <button class="btn btn-primary buy-now-btn"
-                                data-service-id="elite-support"
-                                data-service-name="Realms to Riches Elite Support"
-                                data-service-price="250"
-                                data-service-type="subscription">
+                        <button class="btn btn-primary buy-now-btn" data-service-id="elite-support" data-service-name="Realms to Riches Elite Support" data-service-price="250" data-service-type="subscription">
                             Buy Now
                         </button>
                     </div>
@@ -674,10 +655,7 @@
                         <h3>Startup Accelerator Bundle</h3>
                         <p>Kickstart your online presence with strategic guidance, essential branding, and a professional basic website.</p>
                         <p><strong>Price: $1999</strong></p>
-                        <button class="btn btn-primary buy-now-btn"
-                                data-service-id="startup-bundle"
-                                data-service-name="Startup Accelerator Bundle"
-                                data-service-price="1999">
+                        <button class="btn btn-primary buy-now-btn" data-service-id="startup-bundle" data-service-name="Startup Accelerator Bundle" data-service-price="1999">
                             Buy Now
                         </button>
                     </div>
@@ -691,10 +669,7 @@
                         <h3>Digital Domination Package</h3>
                         <p>Take full control of your digital landscape with an advanced website, comprehensive marketing, and robust SEO and social media strategies.</p>
                         <p><strong>Price: $4499</strong></p>
-                        <button class="btn btn-primary buy-now-btn"
-                                data-service-id="digital-domination"
-                                data-service-name="Digital Domination Package"
-                                data-service-price="4499">
+                        <button class="btn btn-primary buy-now-btn" data-service-id="digital-domination" data-service-name="Digital Domination Package" data-service-price="4499">
                             Buy Now
                         </button>
                     </div>
@@ -708,11 +683,7 @@
                         <h3>Digital Growth Monthly</h3>
                         <p>Continuous optimization and support for your digital marketing channels, including monthly reports and strategic adjustments for sustained online performance.</p>
                         <p><strong>Price: $400/month</strong></p>
-                        <button class="btn btn-primary buy-now-btn"
-                                data-service-id="digital-growth-monthly"
-                                data-service-name="Digital Growth Monthly"
-                                data-service-price="400"
-                                data-service-type="subscription">
+                        <button class="btn btn-primary buy-now-btn" data-service-id="digital-growth-monthly" data-service-name="Digital Growth Monthly" data-service-price="400" data-service-type="subscription">
                             Buy Now
                         </button>
                     </div>
@@ -878,7 +849,7 @@
             </div>
         </div>
 
-       
+
         <div id="partners" class="container">
             <h2>Are you a vendor with a software product that is perfect for Entrepreneurs that you want our agency to promote?</h2>
             <h3>Connect with Thousands of Entrepreneurs and Online Businesses Through Our Network</h3>
@@ -919,8 +890,9 @@
     </footer>
 
     <script src="script.js"></script>
-    
+
     <script type="module" src="scripts/index.js"></script> <!-- React app's entry point -->
-    
+
 </body>
+
 </html>
