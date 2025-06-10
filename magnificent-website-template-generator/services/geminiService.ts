@@ -1,24 +1,35 @@
+
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { GeneratedTemplate } from '../types';
 
-// API Key handling as per strict instructions: Assume process.env.API_KEY is available.
-const API_KEY = process.env.API_KEY;
+// This placeholder will be replaced by the GitHub Action
+const API_KEY = "__GEMINI_API_KEY_PLACEHOLDER__";
 
-// It's good practice to check for the API key, but problem implies it's always set.
-// If it could be missing, a check here would be wise:
-if (!API_KEY) {
-  // This error will be caught by the App component's error handling.
-  console.error("Gemini API Key (process.env.API_KEY) is not set. Template generation will fail.");
-  // throw new Error("Gemini API Key is not configured. Please ensure the API_KEY environment variable is set.");
+let ai: GoogleGenAI | null = null;
+
+if (API_KEY && API_KEY !== "__GEMINI_API_KEY_PLACEHOLDER__") {
+  try {
+    ai = new GoogleGenAI({ apiKey: API_KEY });
+  } catch (e) {
+    console.error("Failed to initialize GoogleGenAI, likely due to an invalid API key format:", e);
+    // The app should still load, but generation will fail.
+    // An error will be thrown by generateWebsiteTemplate if ai is null.
+  }
+} else {
+  if (API_KEY === "__GEMINI_API_KEY_PLACEHOLDER__") {
+    console.warn("Gemini API Key placeholder was not replaced. Template generation will not work. Ensure the GitHub Action ran correctly and the GEMINI_API_KEY secret is set.");
+  } else { // API_KEY is undefined or empty
+    console.error("Gemini API Key is not configured. Template generation will not work. Ensure the GEMINI_API_KEY secret is set for the GitHub Action.");
+  }
 }
 
-const ai = new GoogleGenAI({ apiKey: API_KEY! }); // Use non-null assertion as per problem spec that API_KEY is available
 const MODEL_NAME = "gemini-2.5-flash-preview-04-17";
 
 export async function generateWebsiteTemplate(description: string): Promise<GeneratedTemplate> {
-  if (!API_KEY) { // Redundant if throwing above, but good safeguard if console.error is used.
-    throw new Error("Gemini API Key is not available. Cannot generate template.");
+  if (!ai) {
+    throw new Error("Gemini API client is not initialized. This is likely due to a missing or invalid API key. Please check the deployment configuration and API key.");
   }
+
   const prompt = `
     You are an AI Web Design Architect, renowned for creating stunning, modern, and highly functional website templates.
     Your task is to generate a complete, single-page HTML template and its corresponding CSS styles based on the user's description.
@@ -55,13 +66,10 @@ export async function generateWebsiteTemplate(description: string): Promise<Gene
       contents: prompt,
       config: {
         responseMimeType: "application/json",
-        // Default thinkingConfig is fine for quality. If speed is paramount & model supports, can adjust.
-        // temperature: 0.7, // Adjust for creativity vs. predictability if needed
       },
     });
 
     let jsonStr = response.text.trim();
-    // Remove markdown fences if present (e.g., ```json ... ```)
     const fenceRegex = /^```(\w*)?\s*\n?(.*?)\n?\s*```$/s;
     const match = jsonStr.match(fenceRegex);
     if (match && match[2]) {
@@ -85,9 +93,11 @@ export async function generateWebsiteTemplate(description: string): Promise<Gene
   } catch (error) {
     console.error("Error generating website template with Gemini API:", error);
     if (error instanceof Error) {
-        // Customize error messages for known issues if possible
-        if (error.message.includes("API key not valid")) {
-             throw new Error("The Gemini API key is invalid or not authorized. Please check your API key configuration.");
+        if (error.message.includes("API key not valid") || error.message.includes("invalid API key")) {
+             throw new Error("The Gemini API key is invalid or not authorized. Please verify the API key used for deployment.");
+        }
+        if (error.message.toLowerCase().includes("quota")) {
+            throw new Error("The Gemini API request failed due to quota limits. Please check your API quota.");
         }
         throw new Error(`Gemini API error: ${error.message}`);
     }
