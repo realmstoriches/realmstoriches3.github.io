@@ -148,8 +148,14 @@ The JSON should look like:
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <title>Preview</title>
               <style>
-                body { margin: 0; padding: 0; }
-                ${parsedData.css}
+                  body { 
+                        margin: 0; 
+                        padding: 1rem; /* Add some padding for better look */
+                        background-color: var(--secondary-bg-color, #1a1a1a); /* Default dark BG */
+                        color: var(--primary-text-color, #f0f0f0); /* Default light text */
+                        font-family: sans-serif; /* A sensible default font */
+                        }
+                        ${parsedData.css}
               </style>
             </head>
             <body>
