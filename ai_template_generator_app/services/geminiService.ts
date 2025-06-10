@@ -32,7 +32,10 @@ export const generateWebsiteTemplate = async (preferences: UserPreferences): Pro
     *   Start with \`<!DOCTYPE html>\` and end with \`</html>\`.
     *   Include a \`<head>\` section with a \`<title>\` relevant to the topic, and necessary meta tags (charset, viewport).
     *   **Crucially, include the Tailwind CSS CDN script in the <head>: \`<script src="https://cdn.tailwindcss.com"></script>\`**.
-    *   All styling MUST be done using Tailwind CSS classes directly within the HTML elements. **It is strictly forbidden to use inline \`style\` attributes or \`<style>\` blocks.** The HTML must be pure, with all styling achieved through Tailwind classes applied to elements.
+    *   All styling MUST be done using Tailwind CSS classes directly within the HTML elements. 
+    *   **It is strictly forbidden to use inline \`style\` attributes or \`<style>\` blocks.**
+    *   **It is strictly forbidden to use \`<link rel="stylesheet" ...>\` tags pointing to external or internal CSS files.**
+    *   The HTML must be pure, with all styling achieved through Tailwind classes applied to elements.
     *   Use semantic HTML5 elements where appropriate (e.g., \`<header>\`, \`<nav>\`, \`<main>\`, \`<section>\`, \`<footer>\`, \`<article>\`).
     *   Ensure the design is responsive and looks good on various screen sizes. Use Tailwind's responsive prefixes (sm:, md:, lg:).
     *   Use placeholder images from \`https://picsum.photos/width/height\` if images are needed (e.g., \`https://picsum.photos/600/400\`).
@@ -55,8 +58,9 @@ export const generateWebsiteTemplate = async (preferences: UserPreferences): Pro
     if (rawHtml && typeof rawHtml === 'string') {
         // Remove any <style> tags and their content
         sanitizedHtml = rawHtml.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "");
+        // Remove any <link rel="stylesheet"...> tags
+        sanitizedHtml = sanitizedHtml.replace(/<link\s+.*?rel\s*=\s*['"]stylesheet['"].*?\/?>/gi, "");
         // Attempt to remove any stray HTML comments that might be outside the main document structure.
-        // This is a simple regex and might not cover all edge cases of malformed comments.
         sanitizedHtml = sanitizedHtml.replace(/<!--[\s\S]*?-->/g, ''); 
     } else {
         console.error("Gemini response was not a string or was empty/null:", rawHtml);
