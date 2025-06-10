@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import { UserInputForm } from './components/UserInputForm';
 import { TemplatePreview } from './components/TemplatePreview';
