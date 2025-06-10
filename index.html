@@ -24,6 +24,70 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="canonical" href="https://realmstoriches.github.io/">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Inter Font (from the app's original index.html) -->
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <!-- Custom Scrollbar & Tailwind Config (from the app's original index.html) -->
+    <style>
+      /* Consider if these global styles are desired or if they conflict */
+      /* You might want to scope them or adjust if they affect your existing site */
+      html { font-family: 'Inter', sans-serif; }
+      body { font-family: 'Inter', sans-serif; overscroll-behavior-y: none; }
+      ::-webkit-scrollbar { width: 10px; height: 10px; }
+      ::-webkit-scrollbar-track { background: #0f172a; }
+      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 5px; border: 2px solid #0f172a; }
+      ::-webkit-scrollbar-thumb:hover { background: #475569; }
+      .template-preview-iframe::-webkit-scrollbar-track { background: #e2e8f0; }
+      .template-preview-iframe::-webkit-scrollbar-thumb { background: #94a3b8; border: 2px solid #e2e8f0; }
+      .template-preview-iframe::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+      /* Minimal styling for the app's root if needed before React loads */
+      #magnificent-template-generator-app-root {
+          /* The React app itself uses a dark theme.
+             Its main App.tsx component has: bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900
+             Ensure this container doesn't clash if the app takes a moment to load.
+             The app will override this once it mounts.
+          */
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            animation: {
+              'spin-slow': 'spin 3s linear infinite',
+              'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            }
+          }
+        },
+        // IMPORTANT FOR COEXISTENCE:
+        // If Tailwind's Preflight (CSS reset) dramatically alters your existing site's
+        // styles in undesirable ways, you can disable it.
+        // However, some Tailwind UI elements might rely on Preflight. Test thoroughly.
+        /*
+        corePlugins: {
+          preflight: false,
+        }
+        */
+      }
+    </script>
+
+    <!-- Import Map (from the app's original index.html, paths might need adjustment) -->
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.1.0",
+        "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+        "react/": "https://esm.sh/react@^19.1.0/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.4.0"
+      }
+    }
+    </script>
 
     <meta property="og:title" content="Realms to Riches: Build & Scale Your Profitable Online Business Today">
     <meta property="og:description" content="Realms to Riches empowers entrepreneurs to build and scale thriving online businesses. Discover proven digital marketing strategies, free courses on faceless brands, paid traffic, social media marketing, and recommended tools to achieve online success.">
@@ -126,43 +190,13 @@
     </div>
 
     <main>
-        <!-- AI Concept Generator Section START -->
-        <div class="container section-padding" id="ai-concept-generator-tool-section">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="area text-center">
-                        <h2>AI Website Concept Generator</h2>
-                        <p>Unleash creativity with our AI-powered tool. Describe your ideal website, and let our AI craft a unique concept for you, complete with a tagline, key pages, color schemes, and font suggestions. Perfect for kickstarting your next online project!</p>
-                        <div id="ai-concept-app-container" style="margin-top: 20px; margin-bottom: 20px; background-color: #1f2937; /* Tailwind's gray-800 or similar dark background */ padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); min-height: 700px; /* Ensure container has height */">
-                            <iframe
-                                src="./ai_template_generator_app/index.html"
-                                title="AI Website Template Generator"
-                                style="width: 100%; height: 700px; border: none; display: block;"
-                                sandbox="allow-scripts allow-same-origin allow-forms"
-                            >
-                                <p>Your browser does not support iframes. Please access the <a href="./ai_template_generator_app/index.html">AI Website Concept Generator directly</a>.</p>
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
+        <section id="template-generator-section" style="padding: 20px; background-color: #1a202c; /* Example dark background */">
+            <div id="magnificent-template-generator-app-root">
+                <!-- The React app will load here -->
+                <p style="color: white; text-align: center;">Loading Template Generator...</p>
             </div>
-        </div>
-        <!-- AI Concept Generator Section END -->
-
-        <!-- Realms to Riches Intro Section START -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="area">
-                        <h1>Realms to Riches: Build & Scale Your Profitable Online Business Today</h1>
-                        <h2>Unlock Proven Digital Marketing Strategies for Entrepreneurs</h2>
-                        <p>
-                        Welcome to Realms to Riches, where we empower entrepreneurs like you to build and scale thriving online businesses. Our focus is on providing proven digital marketing strategies, tools, and resources covering everything from generating leads to converting sales. Whether you're just starting out or looking to grow, we have the expertise to help you navigate the world of online commerce and achieve your financial goals.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </section><!-- AI Concept Generator Section START -->
+       
         <!-- Realms to Riches Intro Section END -->
 
         <div id="our-services" class="container">
@@ -577,6 +611,8 @@
     </footer>
 
     <script src="script.js"></script>
+    
+    <script type="module" src="magnificent-app/index.tsx"></script> <!-- React app's entry point -->
     
 </body>
 </html>
