@@ -190,14 +190,79 @@
     </div>
 
     <main>
-        <section id="template-generator-section" style="padding: 20px; background-color: #1a202c; /* Example dark background */">
-            <div id="magnificent-website-template-generator-app-root">
-                <!-- The React app will load here -->
-                <p style="color: white; text-align: center;">Loading Template Generator...</p>
-            </div>
-        </section><!-- AI Concept Generator Section START -->
-       
-        <!-- Realms to Riches Intro Section END -->
+        <div id="ai-website-generator-app">
+    <!-- Paste the content from the new index.html here -->
+            <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.4.0"
+  }
+}
+</script>
+
+  <div class="container">
+    <header>
+      <h1>AI Website Template Generator</h1>
+    </header>
+    <main>
+      <section class="input-section" aria-labelledby="input-heading">
+        <h2 id="input-heading">Describe Your Desired Website</h2>
+        <p>Enter a detailed description of the website you want to create. For example: "A modern landing page for a SaaS product with a hero section, features list, pricing table, and a contact form."</p>
+        <textarea id="prompt-input" rows="6" placeholder="e.g., A personal blog theme, clean and minimalist, with a sidebar for recent posts..." aria-label="Website description prompt"></textarea>
+        <button id="generate-button" type="button">Generate Website</button>
+        <div id="loading-indicator" class="loading-indicator" style="display: none;" role="status" aria-live="polite">
+          <div class="spinner"></div>
+          <p>Generating your website, please wait...</p>
+        </div>
+      </section>
+
+      <section id="output-section" class="output-section" style="display: none;" aria-labelledby="output-heading">
+        <h2 id="output-heading">Generated Website</h2>
+        
+        <div class="preview-area">
+          <h3>Preview</h3>
+          <iframe id="preview-frame" title="Generated Website Preview" sandbox="allow-scripts allow-same-origin"></iframe>
+        </div>
+
+        <div class="code-area">
+          <div class="tabs">
+            <button class="tab-button active" data-tab="html"  aria-controls="html-code-panel" role="tab" aria-selected="true">HTML</button>
+            <button class="tab-button" data-tab="css" aria-controls="css-code-panel" role="tab" aria-selected="false">CSS</button>
+            <button class="tab-button" data-tab="js" aria-controls="js-code-panel" role="tab" aria-selected="false">JavaScript</button>
+          </div>
+          <div id="html-code-panel" class="tab-panel active" role="tabpanel" aria-labelledby="html-tab">
+            <h4>HTML Code</h4>
+            <button class="copy-button" data-target="html-code">Copy HTML</button>
+            <pre><code id="html-code" aria-live="polite"></code></pre>
+          </div>
+          <div id="css-code-panel" class="tab-panel" role="tabpanel" aria-labelledby="css-tab" style="display: none;">
+            <h4>CSS Code</h4>
+            <button class="copy-button" data-target="css-code">Copy CSS</button>
+            <pre><code id="css-code" aria-live="polite"></code></pre>
+          </div>
+          <div id="js-code-panel" class="tab-panel" role="tabpanel" aria-labelledby="js-tab" style="display: none;">
+            <h4>JavaScript Code</h4>
+            <button class="copy-button" data-target="js-code">Copy JavaScript</button>
+            <pre><code id="js-code" aria-live="polite"></code></pre>
+          </div>
+        </div>
+      </section>
+      <div id="error-message" class="error-message" style="display: none;" role="alert"></div>
+    </main>
+    <footer>
+      <p>Powered by Gemini API</p>
+    </footer>
+  </div>
+    <div class="container">
+      <header>
+        <h1>AI Website Template Generator</h1>
+      </header>
+      <main>
+        <!-- ... rest of the app's HTML structure ... -->
+      </main>
+      <footer>
+        <p>Powered by Gemini API</p>
+
 
         <div id="our-services" class="container">
             <h2>Our Services & Pricing</h2>
