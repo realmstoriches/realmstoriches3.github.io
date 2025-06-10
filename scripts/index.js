@@ -1,9 +1,4 @@
-
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
+import { GoogleGenAI } from "@google/genai";
 
 const APP_CONTAINER_ID = 'ai-website-generator-app';
 const appContainer = document.getElementById(APP_CONTAINER_ID);
@@ -14,29 +9,25 @@ if (!appContainer) {
   const API_KEY = process.env.API_KEY;
   if (!API_KEY) {
     showError("API_KEY is not set. Please configure it in your environment variables.");
-    // No throw here, as showError will display message within the (potentially non-existent) UI
-    // If appContainer is null, showError will fail silently or log to console.
-    // Better to handle API_KEY error display carefully if appContainer might be missing.
-    // However, the outer if(!appContainer) already handles this.
   }
 
-  const ai = new GoogleGenAI({ apiKey: API_KEY! }); // Non-null assertion if API_KEY check passes
+  const ai = new GoogleGenAI({ apiKey: API_KEY });
 
-  const promptInput = appContainer.querySelector('#prompt-input') as HTMLTextAreaElement;
-  const generateButton = appContainer.querySelector('#generate-button') as HTMLButtonElement;
-  const loadingIndicator = appContainer.querySelector('#loading-indicator') as HTMLDivElement;
-  const outputSection = appContainer.querySelector('#output-section') as HTMLElement;
-  const previewFrame = appContainer.querySelector('#preview-frame') as HTMLIFrameElement;
-  const htmlCodeElement = appContainer.querySelector('#html-code') as HTMLElement;
-  const cssCodeElement = appContainer.querySelector('#css-code') as HTMLElement;
-  const jsCodeElement = appContainer.querySelector('#js-code') as HTMLElement;
-  const errorMessageElement = appContainer.querySelector('#error-message') as HTMLDivElement;
+  const promptInput = appContainer.querySelector('#prompt-input');
+  const generateButton = appContainer.querySelector('#generate-button');
+  const loadingIndicator = appContainer.querySelector('#loading-indicator');
+  const outputSection = appContainer.querySelector('#output-section');
+  const previewFrame = appContainer.querySelector('#preview-frame');
+  const htmlCodeElement = appContainer.querySelector('#html-code');
+  const cssCodeElement = appContainer.querySelector('#css-code');
+  const jsCodeElement = appContainer.querySelector('#js-code');
+  const errorMessageElement = appContainer.querySelector('#error-message');
 
   const tabButtons = appContainer.querySelectorAll('.tab-button');
   const tabPanels = appContainer.querySelectorAll('.tab-panel');
   const copyButtons = appContainer.querySelectorAll('.copy-button');
 
-  function showError(message: string) {
+  function showError(message) {
     if (errorMessageElement) {
       errorMessageElement.textContent = message;
       errorMessageElement.style.display = 'block';
@@ -54,10 +45,9 @@ if (!appContainer) {
     }
   }
 
-  // Ensure elements exist before adding event listeners
   if (generateButton) {
     generateButton.addEventListener('click', async () => {
-      if (!API_KEY) { // Re-check API_KEY here as it's crucial for functionality
+      if (!API_KEY) {
         showError("API_KEY is not configured. Cannot proceed.");
         return;
       }
@@ -114,7 +104,7 @@ The JSON should look like:
 }
 `;
 
-        const response: GenerateContentResponse = await ai.models.generateContent({
+        const response = await ai.models.generateContent({
           model: 'gemini-2.5-flash-preview-04-17',
           contents: fullPrompt,
           config: {
@@ -129,7 +119,7 @@ The JSON should look like:
           jsonStr = match[2].trim();
         }
 
-        let parsedData: { html: string; css: string; javascript: string };
+        let parsedData;
         try {
           parsedData = JSON.parse(jsonStr);
         } catch (e) {
@@ -174,7 +164,6 @@ The JSON should look like:
         }
 
         if (outputSection) outputSection.style.display = 'block';
-        // Ensure the first tab is active
         switchTab('html');
 
       } catch (error) {
@@ -193,8 +182,7 @@ The JSON should look like:
     console.warn("Generate button not found. App functionality might be limited.");
   }
 
-
-  function switchTab(tabName: string) {
+  function switchTab(tabName) {
     tabButtons.forEach(button => {
       if (button.getAttribute('data-tab') === tabName) {
         button.classList.add('active');
@@ -205,7 +193,7 @@ The JSON should look like:
       }
     });
     tabPanels.forEach(panel => {
-      const panelElement = panel as HTMLElement;
+      const panelElement = panel;
       if (panelElement.id === `${tabName}-code-panel`) {
         panelElement.style.display = 'block';
       } else {
@@ -213,7 +201,6 @@ The JSON should look like:
       }
     });
   }
-
 
   tabButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -229,9 +216,6 @@ The JSON should look like:
       const targetId = button.getAttribute('data-target');
       if (!targetId) return;
 
-      // Note: `appContainer.querySelector` is used implicitly here because `getElementById` is global,
-      // but since IDs should be unique on the page, this is generally fine.
-      // For strict scoping, it would be `appContainer.querySelector(`#${targetId}`);
       const codeElement = appContainer.querySelector(`#${targetId}`);
       if (!codeElement) return;
 
@@ -249,10 +233,9 @@ The JSON should look like:
     });
   });
 
-  // Initialize with the first tab active
   if (tabButtons.length > 0 && tabButtons[0].getAttribute('data-tab')) {
-   switchTab(tabButtons[0].getAttribute('data-tab') as string);
-  } else if (tabButtons.length > 0) { // Fallback if data-tab is missing on first
-    switchTab('html'); // default to html
+   switchTab(tabButtons[0].getAttribute('data-tab'));
+  } else if (tabButtons.length > 0) { 
+    switchTab('html');
   }
 } // End of if (appContainer)
