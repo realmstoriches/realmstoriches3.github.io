@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -24,58 +24,301 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="canonical" href="https://realmstoriches.github.io/">
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Inter Font (from the app's original index.html) -->
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
-    <!-- Custom Scrollbar & Tailwind Config (from the app's original index.html) -->
     <style>
-      /* Consider if these global styles are desired or if they conflict */
-      /* You might want to scope them or adjust if they affect your existing site */
-      html { font-family: 'Inter', sans-serif; }
-      body { font-family: 'Inter', sans-serif; overscroll-behavior-y: none; }
-      ::-webkit-scrollbar { width: 10px; height: 10px; }
-      ::-webkit-scrollbar-track { background: #0f172a; }
-      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 5px; border: 2px solid #0f172a; }
-      ::-webkit-scrollbar-thumb:hover { background: #475569; }
-      .template-preview-iframe::-webkit-scrollbar-track { background: #e2e8f0; }
-      .template-preview-iframe::-webkit-scrollbar-thumb { background: #94a3b8; border: 2px solid #e2e8f0; }
-      .template-preview-iframe::-webkit-scrollbar-thumb:hover { background: #64748b; }
-
-      /* Minimal styling for the app's root if needed before React loads */
-      #magnificent-template-generator-app-root {
-          /* The React app itself uses a dark theme.
-             Its main App.tsx component has: bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900
-             Ensure this container doesn't clash if the app takes a moment to load.
-             The app will override this once it mounts.
-          */
-      }
-    </style>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-            },
-            animation: {
-              'spin-slow': 'spin 3s linear infinite',
-              'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            }
-          }
-        },
-        // IMPORTANT FOR COEXISTENCE:
-        // If Tailwind's Preflight (CSS reset) dramatically alters your existing site's
-        // styles in undesirable ways, you can disable it.
-        // However, some Tailwind UI elements might rely on Preflight. Test thoroughly.
-        /*
-        corePlugins: {
-          preflight: false,
+        #ai-website-generator-app {
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          background-color: #f4f7f9;
+          color: #333;
+          line-height: 1.6;
+  /* Styles like margin, display:flex, min-height are removed as the host page controls the block */
+  /* You can add a border or default padding if desired for the embedded block */
+  /* border: 1px solid #ddd; */
+  /* padding: 10px; */
         }
-        */
-      }
-    </script>
+
+        #ai-website-generator-app .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+  /* flex-grow: 1; Removed as it's part of full page layout */
+        }
+
+        #ai-website-generator-app header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+        }
+        
+        #ai-website-generator-app header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        #ai-website-generator-app .input-section {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+
+        #ai-website-generator-app .input-section h2 {
+            margin-top: 0;
+            color: #34495e;
+            font-size: 1.8em;
+        }
+
+        #ai-website-generator-app .input-section p {
+            font-size: 0.95em;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        #ai-website-generator-app textarea#prompt-input {
+            width: calc(100% - 22px); /* Account for padding and border */
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1em;
+            min-height: 100px;
+            margin-bottom: 15px;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        #ai-website-generator-app button#generate-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        #ai-website-generator-app button#generate-button:hover {
+            background-color: #2980b9;
+        }
+
+        #ai-website-generator-app button#generate-button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #ai-website-generator-app .loading-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            color: #555;
+        }
+
+        #ai-website-generator-app .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #3498db;
+            animation: spin 1s ease infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes spin {
+             0% {
+                transform: rotate(0deg);
+                }
+           100% {
+                transform: rotate(360deg);
+                }
+        }
+
+        #ai-website-generator-app .output-section {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-top: 30px;
+        }
+
+        #ai-website-generator-app .output-section h2 {
+            margin-top: 0;
+            color: #34495e;
+            font-size: 1.8em;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+#ai-website-generator-app .preview-area {
+  margin-bottom: 30px;
+}
+
+#ai-website-generator-app .preview-area h3, 
+#ai-website-generator-app .code-area h4 {
+  color: #2c3e50;
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+#ai-website-generator-app iframe#preview-frame {
+  width: 100%;
+  height: 500px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #fff; /* Ensure iframe background is white */
+}
+
+#ai-website-generator-app .tabs {
+  display: flex;
+  margin-bottom: -1px; /* Overlap bottom border of tabs with panel's top border */
+}
+
+#ai-website-generator-app .tab-button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  background-color: #f9f9f9;
+  margin-right: 5px;
+  border-radius: 6px 6px 0 0;
+  font-size: 1em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#ai-website-generator-app .tab-button.active {
+  background-color: #fff;
+  border-bottom: 1px solid #fff; /* Make it look like it merges with the panel */
+  color: #3498db;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+}
+
+#ai-website-generator-app .tab-button:hover:not(.active) {
+  background-color: #efefef;
+}
+
+#ai-website-generator-app .tab-panel {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 0 6px 6px 6px; /* Rounded corners for the panel itself */
+  background-color: #fff;
+}
+
+#ai-website-generator-app .tab-panel h4 {
+    margin-top: 0;
+}
+
+#ai-website-generator-app pre {
+  background-color: #2d2d2d; /* Dark background for code */
+  color: #f8f8f2; /* Light text for contrast */
+  padding: 15px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 0.9em;
+  line-height: 1.5;
+  max-height: 400px;
+}
+
+#ai-website-generator-app code {
+  font-family: inherit;
+}
+
+#ai-website-generator-app .copy-button {
+  background-color: #7f8c8d;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 0.9em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  float: right;
+  margin-bottom: 10px;
+}
+
+#ai-website-generator-app .copy-button:hover {
+  background-color: #6c7a7b;
+}
+
+#ai-website-generator-app .error-message {
+  background-color: #e74c3c;
+  color: white;
+  padding: 15px;
+  border-radius: 6px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1em;
+}
+
+#ai-website-generator-app footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+  color: #7f8c8d;
+  font-size: 0.9em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #ai-website-generator-app header h1 {
+    font-size: 2em;
+  }
+  #ai-website-generator-app .input-section h2, 
+  #ai-website-generator-app .output-section h2 {
+    font-size: 1.5em;
+  }
+  #ai-website-generator-app .preview-area h3, 
+  #ai-website-generator-app .code-area h4 {
+    font-size: 1.2em;
+  }
+  #ai-website-generator-app button#generate-button {
+    font-size: 1em;
+    padding: 10px 20px;
+  }
+  #ai-website-generator-app iframe#preview-frame {
+    height: 400px;
+  }
+  #ai-website-generator-app .tabs {
+    flex-wrap: wrap; /* Allow tabs to wrap on small screens */
+  }
+  #ai-website-generator-app .tab-button {
+    margin-bottom: 5px; /* Add some space if tabs wrap */
+  }
+}
+
+@media (max-width: 480px) {
+  #ai-website-generator-app .container {
+    width: 95%;
+    padding: 15px;
+  }
+  #ai-website-generator-app header h1 {
+    font-size: 1.8em;
+  }
+  #ai-website-generator-app textarea#prompt-input {
+    min-height: 80px;
+  }
+  #ai-website-generator-app iframe#preview-frame {
+    height: 300px;
+  }
+  #ai-website-generator-app pre {
+    font-size: 0.85em;
+  }
+}
+</style>
+  
 
     <!-- Import Map (from the app's original index.html, paths might need adjustment) -->
     <script type="importmap">
