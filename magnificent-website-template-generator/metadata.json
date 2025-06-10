@@ -1,5 +1,0 @@
-{
-  "name": "Magnificent Website Template Generator",
-  "description": "An application that uses AI to generate magnificent website templates based on user input, and simulates an add to cart, checkout, and download process for the template files.",
-  "requestFramePermissions": []
-}
