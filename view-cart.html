@@ -1,0 +1,122 @@
+      
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEMCLLYPB6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-NEMCLLYPB6');
+    </script>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Cart - Realms to Riches</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo-area">
+                <a href="/">
+                    <img src="img/logo.webp" alt="Realms to Riches Logo" class="site-logo" width="50" height="50">
+                </a>
+            </div>
+            <nav class="main-navigation">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/index.html#courses">Free Courses</a></li>
+                    <li><a href="/index.html#tools">Recommended Tools</a></li>
+                    <li><a href="/shopify-offer.html">Shopify Offer</a></li>
+                    <li><a href="/index.html#services">Our Services</a></li>
+                    <li><a href="/index.html#our-services">Service Packages</a></li>
+                    <li><a href="/view-cart.html">View Cart (<span id="cart-count">0</span>)</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Your Shopping Cart</h1>
+            <div id="cart-display-area">
+                <!-- Main cart items container that will have the glow -->
+                <div class="cart-container" id="cart-items-container-main">
+                    <!-- Cart items will be dynamically loaded here by script.js -->
+                </div>
+
+                <div class="cart-summary-section" id="cart-summary-section">
+                    <div id="cart-total" class="cart-total">
+                        <!-- Total will be rendered here by script.js -->
+                    </div>
+                    <div class="cart-actions-footer">
+                        <a href="/index.html#our-services" class="btn btn-continue-shopping">Continue Shopping</a>
+                        <!-- Changed to a button for proper disabled state control by JS -->
+                        <button id="proceed-to-checkout-btn" class="btn btn-proceed-checkout">Proceed to Checkout</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="empty-cart-message-main" class="empty-cart-message">
+                Your cart is currently empty. <a href="/index.html#our-services">Browse our services</a> to add items.
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-container">
+        <div class="footer-info">
+          <p>© Realms to Riches Copyright 2025</p>
+          <p>CEO: Robert Demotto Jr</p>
+          <p>Mill Creek, WV 26280</p>
+          <p><a href="mailto:realmstoriches@gmail.com">realmstoriches@gmail.com</a></p>
+          <p><a href="tel:304-266-4833">304-266-4833</a></p>
+        </div>
+        <div class="footer-legal">
+           <p><a href="/terms-of-service.html" class="footer-link">Terms of Service</a></p>
+           <p><a href="/privacy-policy.html" class="footer-link">Privacy Policy</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Unified Popup Container (Consistent across pages) -->
+    <div id="main-popup-container" class="popup-overlay">
+        <div id="cookie-consent-content" class="popup-content">
+            <h2>Cookie Consent</h2>
+            <p>We use cookies to ensure you get the best experience on our website. By continuing, you agree to our use of cookies.</p>
+            <div>
+                <a href="/privacy-policy.html" class="cookie-link">Learn More</a>
+                <button id="accept-cookies" class="btn btn-secondary" type="button">Accept</button>
+            </div>
+        </div>
+        <div id="lead-capture-content" class="popup-content">
+            <button id="close-lead-form" class="close-button" type="button">×</button>
+            <img src="img/Drag drop done - English 300x250.webp" alt="Unlock exclusive strategies" style="max-width: 80%; height: auto; margin-bottom: 15px; border-radius: 4px;">
+            <h2>Unlock Exclusive Strategies!</h2>
+            <p>Enter your email to receive free market strategies and insights directly to your inbox.</p>
+            <form id="lead-capture-form-main" action="https://formspree.io/f/xvgajnqr" method="POST">
+                <div class="form-group">
+                    <label for="email-index">Your email:</label>
+                    <input type="email" id="email-index" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="name-index">Your name (optional):</label>
+                    <input type="text" id="name-index" name="name" placeholder="Your Name">
+                </div>
+                <button type="submit">Get Strategies</button>
+            </form>
+            <div id="form-message"></div>
+        </div>
+    </div>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+    
