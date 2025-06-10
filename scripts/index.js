@@ -150,10 +150,11 @@ The JSON should look like:
               <style>
                   body { 
                         margin: 0; 
-                        padding: 1rem; /* Add some padding for better look */
-                        background-color: var(--secondary-bg-color, #1a1a1a); /* Default dark BG */
-                        color: var(--primary-text-color, #f0f0f0); /* Default light text */
-                        font-family: sans-serif; /* A sensible default font */
+                        padding: 1rem;
+                        /* --- FIX: Replaced non-working CSS variables with actual hex codes --- */
+                        background-color: #1a1a1a; /* Default dark BG */
+                        color: #f0f0f0; /* Default light text */
+                        font-family: sans-serif;
                         }
                         ${parsedData.css}
               </style>
