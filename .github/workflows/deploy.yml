@@ -27,7 +27,7 @@ jobs:
       - name: Replace API Key placeholder
         run: |
           # Ensure the path to geminiService.ts is correct relative to the repo root
-          SERVICE_FILE="./magnificent-app/services/geminiService.ts"
+          SERVICE_FILE="./magnificent-website-template-generator/services/geminiService.ts"
           if [ -f "$SERVICE_FILE" ]; then
             # Using | as sed delimiter because API keys can have /
             sed -i "s|__GEMINI_API_KEY_PLACEHOLDER__|${{ secrets.GEMINI_API_KEY }}|g" "$SERVICE_FILE"
