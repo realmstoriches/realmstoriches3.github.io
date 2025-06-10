@@ -1,4 +1,3 @@
-
 export interface UserPreferences {
   websiteType: string;
   topic: string;
