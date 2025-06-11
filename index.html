@@ -152,25 +152,30 @@
         <img src="img/bannerimage(2)-800w.webp" srcset="img/bannerimage(2)-400w.webp, img/bannerimage(2)-800w.webp, img/bannerimage(2)-1200w.webp" sizes="(max-width: 767px) 100vw, (max-width: 991px) 90vw, (max-width: 1199px) 80vw, 1200px" alt="Two entrepreneurs discussing online business strategies in a modern office">
     </div>
     <div class="container section-padding" id="ai-concept-generator-tool-section">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="area text-center"> <!-- Added text-center for centering content within this area -->
-                    <h2>AI Website Concept Generator</h2>
-                    <p>Unleash creativity with our AI-powered tool. Describe your ideal website, and let our AI craft a unique concept for you, complete with a tagline, key pages, color schemes, and font suggestions. Perfect for kickstarting your next online project!</p>
-                    <div id="ai-concept-app-container" style="margin-top: 20px; margin-bottom: 20px; background-color: #1f2937; /* Tailwind's gray-800 or similar dark background */ padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); min-height: 700px; /* Ensure container has height */">
-                        <iframe
-                            src="./ai_template_generator_app/index.html"
-                            title="AI Website Template Generator"
-                            style="width: 100%; height: 700px; border: none; display: block;"
-                            sandbox="allow-scripts allow-same-origin allow-forms"
-                        >
-                            <p>Your browser does not support iframes. Please access the <a href="./ai_template_generator_app/index.html">AI Website Concept Generator directly</a>.</p>
-                        </iframe>
-                    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="area text-center">
+                <h2>AI Website Concept Generator</h2>
+                <p>Unleash creativity with our AI-powered tool. Describe your ideal website, and let our AI craft a unique concept for you, complete with a tagline, key pages, color schemes, and font suggestions. Perfect for kickstarting your next online project!</p>
+                
+                <!-- 
+                  This wrapper now uses a class for styling instead of inline styles.
+                  This makes your HTML cleaner and your CSS more maintainable.
+                -->
+                <div id="ai-concept-app-container" class="ai-app-wrapper">
+                    <iframe
+                        src="./ai_template_generator_app/index.html"
+                        title="AI Website Template Generator"
+                        class="ai-app-iframe"
+                        sandbox="allow-scripts allow-same-origin allow-forms allow-downloads"
+                    >
+                        <p>Your browser does not support iframes. Please access the <a href="./ai_template_generator_app/index.html">AI Website Concept Generator directly</a>.</p>
+                    </iframe>
                 </div>
             </div>
         </div>
     </div>
+</div> 
 <!-- End AI Website Concept Generator Section -->
 
         <div id="our-services" class="container">
