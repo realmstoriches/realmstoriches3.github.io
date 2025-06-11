@@ -151,63 +151,28 @@
     <div class="full-width-banner">
         <img src="img/bannerimage(2)-800w.webp" srcset="img/bannerimage(2)-400w.webp, img/bannerimage(2)-800w.webp, img/bannerimage(2)-1200w.webp" sizes="(max-width: 767px) 100vw, (max-width: 991px) 90vw, (max-width: 1199px) 80vw, 1200px" alt="Two entrepreneurs discussing online business strategies in a modern office">
     </div>
-
-
-        <div class="container"> 
-            <div id="ai-website-generator-app">
-                <div class="container">
-                    <header>
-                        <h1>AI Website Template Generator</h1>
-                    </header>
-                    <main>
-                        <section class="input-section" aria-labelledby="input-heading">
-                            <h2 id="input-heading">Describe Your Desired Website</h2>
-                            <p>Enter a detailed description of the website you want to create. For example: "A modern landing page for a SaaS product with a hero section, features list, a pricing table, and a contact form."</p>
-                            <textarea id="prompt-input" rows="6" placeholder="e.g., A personal blog theme, clean and minimalist, with a sidebar for recent posts..." aria-label="Website description prompt"></textarea>
-                            <button id="generate-button" type="button">Generate Website</button>
-                            <div id="loading-indicator" class="loading-indicator" style="display: none;" role="status" aria-live="polite">
-                                <div class="spinner"></div>
-                                <p>Generating your website, please wait...</p>
-                            </div>
-                        </section>
-                        <section id="output-section" class="output-section" style="display: none;" aria-labelledby="output-heading">
-                            <h2 id="output-heading">Generated Website</h2>
-                            <div class="preview-area">
-                                <h3>Preview</h3>
-                                <iframe id="preview-frame" title="Generated Website Preview" sandbox="allow-scripts allow-same-origin"></iframe>
-                            </div>
-                            <div class="code-area">
-                                <div class="tabs">
-                                    <button class="tab-button active" data-tab="html" aria-controls="html-code-panel" role="tab" aria-selected="true">HTML</button>
-                                    <button class="tab-button" data-tab="css" aria-controls="css-code-panel" role="tab" aria-selected="false">CSS</button>
-                                    <button class="tab-button" data-tab="js" aria-controls="js-code-panel" role="tab" aria-selected="false">JavaScript</button>
-                                </div>
-                                <div id="html-code-panel" class="tab-panel active" role="tabpanel" aria-labelledby="html-tab">
-                                    <h4>HTML Code</h4>
-                                    <button class="copy-button" data-target="html-code">Copy HTML</button>
-                                    <pre><code id="html-code" aria-live="polite"></code></pre>
-                                </div>
-                                <div id="css-code-panel" class="tab-panel" role="tabpanel" aria-labelledby="css-tab" style="display: none;">
-                                    <h4>CSS Code</h4>
-                                    <button class="copy-button" data-target="css-code">Copy CSS</button>
-                                    <pre><code id="css-code" aria-live="polite"></code></pre>
-                                </div>
-                                <div id="js-code-panel" class="tab-panel" role="tabpanel" aria-labelledby="js-tab" style="display: none;">
-                                    <h4>JavaScript Code</h4>
-                                    <button class="copy-button" data-target="js-code">Copy JavaScript</button>
-                                    <pre><code id="js-code" aria-live="polite"></code></pre>
-                                </div>
-                            </div>
-                        </section>
-                        <div id="error-message" class="error-message" style="display: none;" role="alert"></div>
-                    
-                    <footer>
-                        <p>Powered by Gemini API</p>
-                    </footer>
+    <div class="container section-padding" id="ai-concept-generator-tool-section">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="area text-center"> <!-- Added text-center for centering content within this area -->
+                    <h2>AI Website Concept Generator</h2>
+                    <p>Unleash creativity with our AI-powered tool. Describe your ideal website, and let our AI craft a unique concept for you, complete with a tagline, key pages, color schemes, and font suggestions. Perfect for kickstarting your next online project!</p>
+                    <div id="ai-concept-app-container" style="margin-top: 20px; margin-bottom: 20px; background-color: #1f2937; /* Tailwind's gray-800 or similar dark background */ padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); min-height: 700px; /* Ensure container has height */">
+                        <iframe
+                            src="./ai_template_generator_app/index.html"
+                            title="AI Website Template Generator"
+                            style="width: 100%; height: 700px; border: none; display: block;"
+                            sandbox="allow-scripts allow-same-origin allow-forms"
+                        >
+                            <p>Your browser does not support iframes. Please access the <a href="./ai_template_generator_app/index.html">AI Website Concept Generator directly</a>.</p>
+                        </iframe>
+                    </div>
                 </div>
             </div>
         </div>
-    
+    </div>
+<!-- End AI Website Concept Generator Section -->
+
         <div id="our-services" class="container">
             <h2>Our Services & Pricing</h2>
             <h3>Invest in Your Business Growth with Our Expert Solutions</h3>
