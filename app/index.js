@@ -22,6 +22,7 @@ resultsGrid.addEventListener('click', handleDownloadClick);
 
 // --- CORE FUNCTIONS ---
 async function handleGenerateClick() {
+    console.log('Button clicked! The function is running.');
     const userPrompt = promptInput.value;
     if (!userPrompt) {
         alert('Please enter a description for your website.');
