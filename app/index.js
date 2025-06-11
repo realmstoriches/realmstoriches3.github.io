@@ -4,7 +4,7 @@
 
 // --- CONFIGURATION ---
 // IMPORTANT: Replace with your actual Cloudflare Worker URL
-const workerUrl = 'https://my-gemini-proxy.your-username.workers.dev';
+const workerUrl = 'https://my-gemini-proxy.robert-demotto.workers.dev';
 
 // --- DOM ELEMENT REFERENCES ---
 // Input Controls
