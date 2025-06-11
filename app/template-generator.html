@@ -1,1 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Website Generator</title>
 
+    <!-- 
+      This links to the single, shared stylesheet at the root of your project.
+      The path '../' goes up one level from the app directory.
+    -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- 
+      RECOMMENDED: For professional icons. Add this to your main site's <head>
+      or include it here if you prefer.
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    -->
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <header class="app-header">
+            <h2>AI-Powered Website Generator</h2>
+            <p>Describe your vision, and our AI will craft unique website templates for you.</p>
+        </header>
+
+        <!-- === INPUT SECTION === -->
+        <section class="input-section">
+            <div class="prompt-wrapper">
+                <label for="prompt-input">Your Website Idea</label>
+                <textarea id="prompt-input" rows="4" placeholder="e.g., A minimalist portfolio for a landscape photographer with a dark theme and a contact form."></textarea>
+            </div>
+            
+            <details class="advanced-options">
+                <summary>Advanced Options</summary>
+                <div class="options-grid">
+                    <div>
+                        <label for="color-palette-input">Primary Colors (optional)</label>
+                        <input type="text" id="color-palette-input" placeholder="e.g., navy blue, gold, white">
+                    </div>
+                    <div>
+                        <label for="font-style-input">Font Style (optional)</label>
+                        <select id="font-style-input">
+                            <option value="">Default</option>
+                            <option value="modern sans-serif">Modern Sans-Serif</option>
+                            <option value="classic serif">Classic Serif</option>
+                            <option value="playful script">Playful Script</option>
+                            <option value="tech monospace">Techy Monospace</option>
+                        </select>
+                    </div>
+                </div>
+            </details>
+
+            <button id="generate-btn" class="cta-button">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Templates
+            </button>
+        </section>
+
+        <!-- === STATUS & LOADING SECTION === -->
+        <section id="status-section" class="status-section" style="display: none;">
+            <div class="spinner"></div>
+            <p id="status-message">Brewing up some designs... this can take up to a minute!</p>
+        </section>
+
+        <!-- === RESULTS SECTION === -->
+        <!-- This grid will be populated by index.js using the template below -->
+        <section id="results-container" class="results-container">
+            <h3 id="results-title" style="display: none;">Your Generated Templates</h3>
+            <div id="results-grid" class="results-grid">
+                <!-- Template cards will be inserted here -->
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 
+      ==================================================================
+      HTML TEMPLATE FOR A SINGLE RESULT CARD
+      This is not displayed directly. Your index.js will clone this, 
+      fill it with data from the API, and append it to the #results-grid.
+      ==================================================================
+    -->
+    <template id="template-card-template">
+        <div class="template-card">
+            <h4 class="card-title">Template Variation</h4>
+            <div class="preview-wrapper">
+                <!-- The sandbox attribute is a critical security feature! -->
+                <iframe class="preview-iframe" sandbox="allow-scripts allow-same-origin"></iframe>
+            </div>
+            <div class="download-area">
+                <p><strong>Download Files:</strong></p>
+                <div class="download-buttons">
+                    <button class="download-btn" data-type="html"><i class="fa-solid fa-file-code"></i> HTML</button>
+                    <button class="download-btn" data-type="css"><i class="fa-solid fa-file-pen"></i> CSS</button>
+                    <button class="download-btn" data-type="js"><i class="fa-brands fa-js"></i> JS</button>
+                </div>
+                <div class="image-downloads" data-type="images">
+                    <!-- Links to generated images will be populated here by JS -->
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <!-- 
+      This script contains all the application logic. 
+      The 'defer' attribute ensures it runs after the HTML is fully parsed.
+    -->
+    <script src="index.js" defer></script>
+
+</body>
+</html>
