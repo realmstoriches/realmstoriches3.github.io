@@ -159,8 +159,8 @@
                 <p>Unleash creativity with our AI-powered tool. Describe your ideal website, and let our AI craft a unique concept for you, complete with a tagline, key pages, color schemes, and font suggestions. Perfect for kickstarting your next online project!</p>
                 
                 <!-- 
-                  This wrapper now uses a class for styling instead of inline styles.
-                  This makes your HTML cleaner and your CSS more maintainable.
+                  This wrapper uses the `ai-app-wrapper` class from your CSS
+                  to create the dark, padded background for your app.
                 -->
                 <div id="ai-concept-app-container" class="ai-app-wrapper">
                     <iframe
@@ -169,12 +169,16 @@
                         class="ai-app-iframe"
                         sandbox="allow-scripts allow-same-origin allow-forms allow-downloads"
                     >
-                        <p>Your browser does not support iframes. Please access the <a href="./ai_template_generator_app/index.html">AI Website Concept Generator directly</a>.</p>
+                        <!-- 
+                          CORRECTED: The fallback link now also points to the correct /app/ folder.
+                        -->
+                        <p>Your browser does not support iframes. Please access the <a href="./app/index.html">AI Website Concept Generator directly</a>.</p>
                     </iframe>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div> 
 <!-- End AI Website Concept Generator Section -->
 
