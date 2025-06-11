@@ -1,41 +1,28 @@
-// =============================================
-//  AI WEBSITE GENERATOR - APPLICATION SCRIPT
-// =============================================
-
-// --- CONFIGURATION ---
-// IMPORTANT: Replace with your actual Cloudflare Worker URL
 const workerUrl = 'https://my-gemini-proxy.robert-demotto.workers.dev';
 
-// --- DOM ELEMENT REFERENCES ---
-// Input Controls
 const generateBtn = document.getElementById('generate-btn');
 const promptInput = document.getElementById('prompt-input');
 const colorPaletteInput = document.getElementById('color-palette-input');
 const fontStyleInput = document.getElementById('font-style-input');
 
-// Status & Results Containers
+
 const statusSection = document.getElementById('status-section');
 const statusMessage = document.getElementById('status-message');
 const resultsContainer = document.getElementById('results-container');
 const resultsGrid = document.getElementById('results-grid');
 const resultsTitle = document.getElementById('results-title');
 
-// The HTML <template> for a single result card
 const cardTemplate = document.getElementById('template-card-template');
 
 
-// --- EVENT LISTENERS ---
+
 generateBtn.addEventListener('click', handleGenerateClick);
 
-// Use Event Delegation for download buttons since they are created dynamically
+
 resultsGrid.addEventListener('click', handleDownloadClick);
 
 
-// --- CORE FUNCTIONS ---
 
-/**
- * Main function triggered when the "Generate" button is clicked.
- */
 async function handleGenerateClick() {
     const userPrompt = promptInput.value;
     if (!userPrompt) {
@@ -43,7 +30,7 @@ async function handleGenerateClick() {
         return;
     }
 
-    // 1. Prepare UI for loading state
+
     resultsGrid.innerHTML = ''; // Clear previous results
     resultsTitle.style.display = 'none';
     statusMessage.textContent = 'Crafting your templates... This may take a minute or two.';
