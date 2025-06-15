@@ -39,7 +39,7 @@ async function handleGenerateClick() {
     const advancedPrompt = `User Request: "${userPrompt}"\nPrimary Colors: "${colorPaletteInput.value || 'AI decides'}"\nFont Style: "${fontStyleInput.value || 'AI decides'}"`;
 
     try {
-        const response = await fetch(workerUrl, {
+        const response = await fetch(workerUrl,{
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ prompt: advancedPrompt }),
