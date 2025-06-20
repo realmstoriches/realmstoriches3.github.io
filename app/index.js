@@ -3,7 +3,7 @@
 // =============================================
 
 // --- CONFIGURATION ---
-const workerUrl = 'https://my-gemini-proxy.robert-demotto.workers.dev'; // <-- PASTE YOUR WORKER URL HERE
+const workerUrl = 'https://my-gemini-proxy.robert-demotto.workers.dev/api/generate-template'; // <-- PASTE YOUR WORKER URL HERE
 
 // --- DOM ELEMENT REFERENCES ---
 const generateBtn = document.getElementById('generate-btn');
