@@ -158,6 +158,9 @@
     <script>
         // --- Stripe Payment Element Integration (Needs Server-Side) ---
         const stripe = Stripe('YOUR_STRIPE_PUBLISHABLE_KEY'); // REPLACE WITH YOUR ACTUAL PUBLISHABLE KEY
+        
+        const BACKEND_URL = 'https://mystripebackend-production.up.railway.app'; // <-- CHANGE HERE: YOUR RAILWAY URL
+
         let elements;
         let clientSecret;
 
@@ -167,7 +170,7 @@
                 // Fetch client secret from your backend.
                 // This 'create-payment-intent' endpoint would calculate the total based on cart items
                 // and create a PaymentIntent on your Stripe account.
-                const response = await fetch('/create-payment-intent', { // REPLACE with your actual backend endpoint
+                const response = await fetch(`https://mystripebackend-production.up.railway.app/create-payment-intent`, { // REPLACE with your actual backend endpoint
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
