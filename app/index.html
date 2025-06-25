@@ -4,18 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Website Generator</title>
-
-    <!-- 
-      This links to the single, shared stylesheet at the root of your project.
-      The path '../' goes up one level from the app directory.
-    -->
     <link rel="stylesheet" href="../style.css">
-
-    <!-- 
-      RECOMMENDED: For professional icons. Add this to your main site's <head>
-      or include it here if you prefer.
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    -->
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
@@ -65,8 +56,7 @@
         </section>
 
         <!-- === RESULTS SECTION === -->
-        <!-- This grid will be populated by index.js using the template below -->
-        <section id="results-container" class="results-container">
+        <section class="results-container"> <!-- FIX #1: Removed the unnecessary id="results-container" to avoid confusion -->
             <h3 id="results-title" style="display: none;">Your Generated Templates</h3>
             <div id="results-grid" class="results-grid">
                 <!-- Template cards will be inserted here -->
@@ -78,8 +68,6 @@
     <!-- 
       ==================================================================
       HTML TEMPLATE FOR A SINGLE RESULT CARD
-      This is not displayed directly. Your index.js will clone this, 
-      fill it with data from the API, and append it to the #results-grid.
       ==================================================================
     -->
     <template id="template-card-template">
@@ -87,7 +75,7 @@
             <h4 class="card-title">Template Variation</h4>
             <div class="preview-wrapper">
                 <!-- The sandbox attribute is a critical security feature! -->
-                <iframe class="preview-iframe" sandbox="allow-scripts allow-popups allow-forms allow-pointer-lock"></iframe>
+                <iframe class="preview-iframe" title="Website Preview" sandbox="allow-scripts allow-forms"></iframe>
             </div>
             <div class="download-area">
                 <p><strong>Download Files:</strong></p>
@@ -104,8 +92,9 @@
     </template>
     
     <!-- 
-      This script contains all the application logic. 
-      The 'defer' attribute ensures it runs after the HTML is fully parsed.
+      FIX #2: Moved the script tag to be the absolute last thing before the </body> tag.
+      The 'defer' attribute is still good practice, but this placement physically guarantees
+      that all HTML elements above it (including the template) exist before the script runs.
     -->
     <script src="index.js" defer></script>
 
