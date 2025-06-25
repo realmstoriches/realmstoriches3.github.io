@@ -87,10 +87,18 @@ function createTemplateCard(templateData, index) {
     const imageContainer = card.querySelector('.image-downloads');
     const cardElement = card.querySelector('.template-card');
 
+    
+
     cardTitle.textContent = templateData.title || `Template Variation ${index}`;
     cardElement.dataset.html = templateData.html || '';
     cardElement.dataset.css = templateData.css || '';
     cardElement.dataset.js = templateData.js || '';
+
+    if (!previewFrame) {
+        console.error("CRITICAL ERROR: Could not find the element with class '.preview-iframe' inside your #template-card-template in your HTML file. The preview cannot be rendered.");
+        // Still return the card, just without the preview content
+        return card;
+    }
     
     const previewDoc = previewFrame.contentWindow.document;
     const fullHtml = `<!DOCTYPE html><html lang="en"><head><style>${templateData.css || ''}</style></head><body>${templateData.html || ''}<script>${templateData.js || ''}<\/script></body></html>`;
