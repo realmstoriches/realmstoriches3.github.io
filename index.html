@@ -153,24 +153,29 @@
             sizes="(max-width: 767px) 90vw, 23vw"
             alt="Realms to Riches brand representation of gears and clockworks representing its smooth functioning and trustworty business reputation">
     </div>
-    
-    <div class="container section-padding" id="ai-website-template-generation-tool-section">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="area text-center">
-                <h2>AI Website Concept Generator</h2>
-                <p>Unleash creativity with our AI-powered tool. Describe your ideal website, and let our AI craft a unique concept for you, complete with a tagline, key pages, color schemes, and font suggestions. Perfect for kickstarting your next online project!</p>
-                <div id="ai-concept-app-container" class="ai-app-wrapper">
-                   <iframe
-                        src="./app/index.html"
-                        title="AI Website Template Generator"
-                        class="ai-app-iframe">    
-                        <p>Your browser does not support iframes. Please access the <a href="./app/index.html">AI Website Concept Generator directly</a>.</p>
-                   </iframe>    
+    <!-- CORRECTED STRUCTURE -->
+    <div class="section-padding" id="ai-website-template-generation-tool-section">
+        <div class="container"> <!-- Use a standard container just for the title/text -->
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2>AI Website Concept Generator</h2>
+                    <p>Unleash creativity with our AI-powered tool. Describe your ideal website, and let our AI craft a unique concept for you, complete with a tagline, key pages, color schemes, and font suggestions. Perfect for kickstarting your next online project!</p>
                 </div>
             </div>
         </div>
+    
+    <!-- This wrapper now controls the app's width and is not constrained by other elements -->
+        <div id="ai-concept-app-container" class="ai-app-wrapper">
+            <iframe
+                src="./app/index.html"
+                title="AI Website Template Generator"
+                class="ai-app-iframe">    
+                <p>Your browser does not support iframes. Please access the <a href="./app/index.html">AI Website Concept Generator directly</a>.</p>
+            </iframe>    
+        </div>
     </div>
+<!-- End AI Website Concept Generator Section -->
+   
 </div>
 </div> 
 <!-- End AI Website Concept Generator Section -->
