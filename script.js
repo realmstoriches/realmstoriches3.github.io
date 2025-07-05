@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // =========================================================================
 
     // This is the URL of your deployed backend on Railway.
-    const BACKEND_URL = 'https://mystripebackend-production.up.railway.app';
+    const BACKEND_URL = 'https://my-stripe-backend-inky.vercel.app';
 
     // This function is now called by the "Proceed to Checkout" button.
     async function redirectToStripeCheckout() {
